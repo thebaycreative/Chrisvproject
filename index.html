@@ -1,1 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chris | Food Content Creator | Bay Area</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #0F0F0F;
+            --white: #FFFFFF;
+            --cream: #E8D5C4;
+            --accent: #D97A5F;
+            --charcoal: #2A2A2A;
+            --text: #1A1A1A;
+            --light-gray: #F5F5F5;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--white);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Parallax Container */
+        .parallax-section {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.85;
+            z-index: -1;
+        }
+
+        .parallax-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(15, 15, 15, 0.4) 0%, rgba(15, 15, 15, 0.2) 100%);
+            z-index: 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: var(--white);
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        .hero .tagline {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: var(--cream);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--accent);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent);
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(217, 122, 95, 0.3);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--white);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(8px);
+            }
+        }
+
+        /* Content Sections */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Crimson Text', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 600;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .about-text h3 {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+        }
+
+        .about-image {
+            position: relative;
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-card {
+            position: relative;
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            cursor: pointer;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .portfolio-card:hover .portfolio-card-image {
+            transform: scale(1.05);
+        }
+
+        .portfolio-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(15, 15, 15, 0.5) 0%, rgba(217, 122, 95, 0.3) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .portfolio-card:hover .portfolio-card-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-card-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-card-description {
+            font-size: 0.95rem;
+            color: var(--cream);
+            line-height: 1.6;
+        }
+
+        /* Collaborations Section */
+        .collaborations {
+            background-color: var(--light-gray);
+            padding: 6rem 2rem;
+        }
+
+        .collab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .collab-item {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .collab-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .collab-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .collab-item h3 {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .collab-item p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--black) 0%, var(--charcoal) 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .cta-section h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--cream);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .instagram-link {
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--charcoal);
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-link {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--cream);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-image {
+                height: 300px;
+            }
+
+            .parallax-bg {
+                background-attachment: scroll;
+            }
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-button {
+                padding: 0.875rem 2rem;
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                margin-bottom: 1rem;
+            }
+
+            .hero .tagline {
+                margin-bottom: 1.5rem;
+            }
+
+            .section-title {
+                margin-bottom: 2rem;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .parallax-section {
+                height: 80vh;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--accent);
+            color: var(--white);
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Loading animation */
+        .image-placeholder {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Hero Section with Parallax -->
+    <section class="parallax-section" id="hero">
+        <div class="parallax-bg" id="parallax-bg-hero" style="background-image: url('https://images.unsplash.com/photo-15046749006672-85d57da932bf?w=1200&q=80');"></div>
+        <div class="parallax-overlay"></div>
+        <div class="hero">
+            <h1>Chris</h1>
+            <p class="tagline">Food Content Creator</p>
+            <p style="color: var(--cream); margin-bottom: 2rem; font-size: 1.1rem; font-weight: 300;">Crafting Stories Through Flavor</p>
+            <a href="#portfolio" class="cta-button">View Work</a>
+        </div>
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24">
+                <polyline points="12 5 12 19"></polyline>
+                <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
+        </div>
+    </section>
+
+    <main id="main-content">
+        <!-- About Section -->
+        <section class="section" id="about">
+            <h2 class="section-title">About</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Professional Storyteller</h3>
+                    <p>
+                        I specialize in creating compelling visual narratives around food culture, with featured work on Food Network and collaborations with industry leaders like Guy Fieri. My approach combines culinary passion with technical precision to capture the essence of every dish and dining experience.
+                    </p>
+                    <p>
+                        Based in the Bay Area, I focus on documenting the region's vibrant food scene—from Michelin-starred establishments to hidden local gems. Each piece tells a story worth savoring.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <div class="stat-number">500K+</div>
+                            <div class="stat-label">Followers</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">150+</div>
+                            <div class="stat-label">Collaborations</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=600&q=80" alt="Food content creation in action" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section class="section" id="portfolio">
+            <h2 class="section-title">Portfolio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80" alt="Gourmet burger photography" class="portfolio-card-image" loading="lazy">
+                    <div class="portfolio-card-overlay">
+                        <h3 class="portfolio-card-title">Artisan Burgers</h3>
+                        <p class="portfolio-card-description">A deep dive into Bay Area's best burger destinations and their signature creations.</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1557521552-d282ca40cb42?w=600&q=80" alt="Gourmet plating" class="portfolio-card-image" loading="lazy">
+                    <div class="portfolio-card-overlay">
+                        <h3 class="portfolio-card-title">Fine Dining</h3>
+                        <p class="portfolio-card-description">Exploring technique, presentation, and the artistry behind Michelin-starred plates.</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561849?w=600&q=80" alt="Street food scene" class="portfolio-card-image" loading="lazy">
+                    <div class="portfolio-card-overlay">
+                        <h3 class="portfolio-card-title">Street Food Culture</h3>
+                        <p class="portfolio-card-description">Authentic flavors and stories from Bay Area's diverse street food vendors.</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7febce4a46?w=600&q=80" alt="Coffee and pastries" class="portfolio-card-image" loading="lazy">
+                    <div class="portfolio-card-overlay">
+                        <h3 class="portfolio-card-title">Café Culture</h3>
+                        <p class="portfolio-card-description">Intimate moments at specialty coffee shops and artisan bakeries.</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&q=80" alt="Sushi and Asian cuisine" class="portfolio-card-image" loading="lazy">
+                    <div class="portfolio-card-overlay">
+                        <h3 class="portfolio-card-title">Global Cuisines</h3>
+                        <p class="portfolio-card-description">Celebrating diverse culinary traditions across the Bay Area's international food scene.</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&q=80" alt="Farmers market produce" class="portfolio-card-image" loading="lazy">
+                    <div class="portfolio-card-overlay">
+                        <h3 class="portfolio-card-title">Farm to Table</h3>
+                        <p class="portfolio-card-description">Connecting local farmers and producers with their most passionate consumers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Collaborations Section -->
+        <section class="collaborations" id="collaborations">
+            <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+                <h2 class="section-title" style="color: var(--text);">Featured Collaborations</h2>
+                <div class="collab-grid">
+                    <div class="collab-item">
+                        <div class="collab-icon">📺</div>
+                        <h3>Food Network</h3>
+                        <p>Featured content creator and consultant for multiple network productions and digital series.</p>
+                    </div>
+                    <div class="collab-item">
+                        <div class="collab-icon">👨‍🍳</div>
+                        <h3>Guy Fieri</h3>
+                        <p>Collaborated on Food Network features showcasing Bay Area's best food destinations and personalities.</p>
+                    </div>
+                    <div class="collab-item">
+                        <div class="collab-icon">🎥</div>
+                        <h3>Premium Brands</h3>
+                        <p>Partner with leading food and beverage brands for authentic, high-impact content campaigns.</p>
+                    </div>
+                    <div class="collab-item">
+                        <div class="collab-icon">🏆</div>
+                        <h3>Award Winning</h3>
+                        <p>Recognized for storytelling excellence and innovative approaches to food content creation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Let's Create Something Delicious</h2>
+            <p>Follow for daily food stories, behind-the-scenes content, and exclusive collaborations from the Bay Area food scene.</p>
+            <a href="https://www.instagram.com/chrisillmatic?igsh=NTc4MTIwNjQ2YQ==" class="cta-button instagram-link" target="_blank" rel="noopener noreferrer">Follow on Instagram</a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Chris | Food Content Creator. All rights reserved.</p>
+        <p>
+            <a href="https://www.instagram.com/chrisillmatic?igsh=NTc4MTIwNjQ2YQ==" class="footer-link" target="_blank" rel="noopener noreferrer">Instagram</a> •
+            <span style="color: #999;">Bay Area Based</span>
+        </p>
+    </footer>
+
+    <script>
+        // Parallax scrolling effect
+        const parallaxBg = document.getElementById('parallax-bg-hero');
+        const parallaxImages = [
+            'https://images.unsplash.com/photo-1504674900006672-85d57da932bf?w=1200&q=80',
+            'https://images.unsplash.com/photo-1567521464027-f127ff144326?w=1200&q=80',
+            'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=1200&q=80',
+            'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1200&q=80'
+        ];
+
+        let currentImageIndex = 0;
+
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            const heroHeight = document.getElementById('hero').offsetHeight;
+
+            // Parallax effect for hero background
+            if (scrollPosition < heroHeight) {
+                parallaxBg.style.transform = `translateY(${scrollPosition * 0.5}px)`;
+            }
+
+            // Change background image based on scroll progress
+            const scrollProgress = scrollPosition / (document.documentElement.scrollHeight - window.innerHeight);
+            const newImageIndex = Math.floor(scrollProgress * parallaxImages.length);
+
+            if (newImageIndex !== currentImageIndex && newImageIndex < parallaxImages.length) {
+                currentImageIndex = newImageIndex;
+                parallaxBg.style.backgroundImage = `url('${parallaxImages[currentImageIndex]}')`;
+                parallaxBg.style.opacity = '0.7';
+                setTimeout(() => {
+                    parallaxBg.style.opacity = '0.85';
+                }, 100);
+            }
+        });
+
+        // Smooth scroll for CTA button
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Lazy loading images
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                            observer.unobserve(img);
+                        }
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Scroll indicator fade out
+        const scrollIndicator = document.querySelector('.scroll-indicator');
+        window.addEventListener('scroll', () => {
+            const heroHeight = document.getElementById('hero').offsetHeight;
+            const scrollProgress = Math.min(window.scrollY / (heroHeight * 0.5), 1);
+            scrollIndicator.style.opacity = 1 - scrollProgress;
+            scrollIndicator.style.pointerEvents = scrollProgress > 0.8 ? 'none' : 'auto';
+        });
+
+        // Preload images for better parallax effect
+        parallaxImages.forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+
+        // Add subtle parallax to portfolio cards on scroll
+        const portfolioCards = document.querySelectorAll('.portfolio-card');
+        
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                } else {
+                    entry.target.style.opacity = '0.5';
+                    entry.target.style.transform = 'translateY(20px)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        portfolioCards.forEach(card => {
+            card.style.opacity = '0.5';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s cubic-bezier(0.23, 1, 0.320, 1)';
+            cardObserver.observe(card);
+        });
+    </script>
+</body>
+</html>
 
