@@ -605,14 +605,13 @@
     <div class="instagram-grid">
         
         <!-- Post Embed Container 1 -->>
-          <div class="instagram-post">
+        <div class="instagram-post">
             <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Dbd0VSgo6k6/" data-instgrm-version="14"></blockquote>
         </div>
         <!-- Post Embed Container 2 -->
         <div class="instagram-post">
             <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DaVWUqjpzhH/" data-instgrm-version="14"></blockquote>
         </div>
-
         <!-- Post Embed Container 3 -->
         <div class="instagram-post">
             <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DaOU7LsSvUQ/" data-instgrm-version="14"></blockquote>
@@ -771,9 +770,16 @@
             card.style.transition = 'all 0.6s cubic-bezier(0.23, 1, 0.320, 1)';
             cardObserver.observe(card);
         });
+
+        window.addEventListener('load', () => {
+    if (window.instgrm) {
+        window.instgrm.Embeds.process();
+    }
+});
     </script>
     <!-- Official Instagram Embed Script -->
 <script async src="//www.instagram.com/embed.js"></script>
+    
 </body>
 </html>
 
