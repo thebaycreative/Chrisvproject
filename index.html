@@ -6,22 +6,7 @@
     <title>Chris | Digital Content Creator | Bay Area</title>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        
-        .instagram-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-    justify-items: center;
-}
-
-.instagram-post {
-    width: 100%;
-    max-width: 400px;
-    background: var(--white);
-    border-radius: 8px;
-    overflow: hidden;
-}  
+          
         * {
             margin: 0;
             padding: 0;
@@ -327,6 +312,31 @@
             color: var(--cream);
             line-height: 1.6;
         }
+         <!-- Instagram Feed Section -->
+<section class="section" id="instagram-feed">
+    <h2 class="section-title">Latest Content</h2>
+    <div class="instagram-grid">
+        
+        <!-- Post Embed Container 1 -->
+        <div class="instagram-post">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Dbd0VSgo6k6/" data-instgrm-version="14"></blockquote>
+        </div>
+
+        <!-- Post Embed Container 2 -->
+        <div class="instagram-post">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DaVWUqjpzhH/" data-instgrm-version="14"></blockquote>
+        </div>
+
+        <!-- Post Embed Container 3 -->
+        <div class="instagram-post">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DaOU7LsSvUQ/" data-instgrm-version="14"></blockquote>
+        </div>
+
+    </div>
+</section>
+
+<!-- Official Instagram Embed Script -->
+<script async src="//www.instagram.com/embed.js"></script>
 
         /* Collaborations Section */
         .collaborations {
@@ -371,32 +381,6 @@
             font-size: 0.95rem;
             color: #666;
         }
-
-        <!-- Instagram Feed Section -->
-<section class="section" id="instagram-feed">
-    <h2 class="section-title">Latest Content</h2>
-    <div class="instagram-grid">
-        
-        <!-- Post Embed Container 1 -->
-        <div class="instagram-post">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Dbd0VSgo6k6/" data-instgrm-version="14"></blockquote>
-        </div>
-
-        <!-- Post Embed Container 2 -->
-        <div class="instagram-post">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DaVWUqjpzhH/" data-instgrm-version="14"></blockquote>
-        </div>
-
-        <!-- Post Embed Container 3 -->
-        <div class="instagram-post">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DaOU7LsSvUQ/" data-instgrm-version="14"></blockquote>
-        </div>
-
-    </div>
-</section>
-
-<!-- Official Instagram Embed Script -->
-<script async src="//www.instagram.com/embed.js"></script>
 
         /* CTA Section */
         .cta-section {
@@ -541,6 +525,22 @@
                 background-position: -200% 0;
             }
         }
+        
+        .instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    justify-items: center;
+}
+
+        .instagram-post {
+    width: 100%;
+    max-width: 400px;
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+}
     </style>
 </head>
 <body>
